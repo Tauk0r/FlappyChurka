@@ -12,12 +12,17 @@ const queries = {};
 
 server.use(express.static(path.join(__dirname, "FlappyChurka")));
 
-// Функция записи в файл
+// Функция записи в файл и логирования в консоль
 const logUserData = (userId, username, displayName) => {
     const logEntry = `ID: ${userId}, Username: ${username || "Unknown"}, Display Name: ${displayName || "Unknown"}, Time: ${new Date().toISOString()}\n`;
+    
+    // Запись в файл
     fs.appendFile("user_data.txt", logEntry, (err) => {
         if (err) {
             console.error("Ошибка записи в файл:", err);
+        } else {
+            // Логирование в консоль
+            console.log(`Записан пользователь: ID = ${userId}, Username = ${username || "Unknown"}, Display Name: ${displayName || "Unknown"}, Time: ${new Date().toISOString()}\n`);
         }
     });
 };
