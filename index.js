@@ -10,6 +10,14 @@ const port = process.env.PORT || 5000;
 const gameName = "FlappyChurka";
 const queries = {};
 
+let a = 0; // Переменная для накопления значения
+
+// Увеличиваем значение переменной `a` каждую минуту
+setInterval(() => {
+    a += 0.00000001;
+    console.log(`Текущее значение a: ${a}`);
+}, 60000); // 60000 миллисекунд = 1 минута
+
 server.use(express.static(path.join(__dirname, "FlappyChurka")));
 
 // Функция записи в файл и логирования в консоль
